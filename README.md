@@ -8,7 +8,6 @@ A Philippine BPO giant operates 12 contact centers handling 620,000 interactions
 
 ```mermaid
 flowchart LR
-    SP --> RAW[RAW Tables]
     RAW --> DT[Dynamic Tables]
     DT --> ML[ML Functions]
     DT --> SEARCH[Cortex Search]
