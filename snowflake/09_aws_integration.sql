@@ -1,6 +1,6 @@
 -- ============================================================================
 -- 09_AWS_INTEGRATION.SQL — AWS services for Contact Center Intelligence & CSAT Optimization
--- Account: 018437500440 | Region: ap-southeast-1
+-- Account: <YOUR_AWS_ACCOUNT_ID> | Region: ap-southeast-1
 -- Skip this script for Snowflake-only build
 -- ============================================================================
 USE DATABASE CONTACT_CENTER_AI;
