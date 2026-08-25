@@ -114,7 +114,7 @@ Run all scripts including AWS integration. Deploy QuickSight dashboard from `qui
 ## Business Impact
 
 Industry research and Snowflake customer outcomes:
-- **Philippines handles 70% of global voice BPO outsourcing** — [IBPAP](https://ibpap.org/industry-facts-and-figures)
+- **Philippines handles 70% of global voice BPO outsourcing** — [IBPAP](https://ibpap.org/)
 - **AI-powered quality monitoring improves CSAT 15-25% in contact centers** — [Gartner](https://www.gartner.com/en/customer-service-support/trends/customer-service-technology)
 - **Real-time sentiment analysis reduces escalations by 30%** — [Forrester](https://www.forrester.com/research/customer-experience/)
 - **Contact center AI market projected to reach $4.1B by 2027** — [MarketsandMarkets](https://www.marketsandmarkets.com/Market-Reports/contact-center-ai-market)
