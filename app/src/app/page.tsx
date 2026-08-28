@@ -134,11 +134,10 @@ export default function HomePage() {
           'Show agent productivity by shift schedule',
           'What is the optimal staffing level for holiday season?',
         ]}
-        mode="both"
-        onSubmit={async (question, mode) => {
+        onSubmit={async (question) => {
           return {
-            answer: `[Demo Mode] Response to: "${question}" (${mode} mode). Connect to Snowflake for live data.`,
-            sql: mode === 'sql' ? 'SELECT * FROM CURATED.SUMMARY LIMIT 10;' : undefined,
+            answer: `[Demo Mode] Response to: "${question}" Connect to Snowflake for live data.`,
+            sql: 'SELECT * FROM CURATED.SUMMARY LIMIT 10;',
           };
         }}
       />
