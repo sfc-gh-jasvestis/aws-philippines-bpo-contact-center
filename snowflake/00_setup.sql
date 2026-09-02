@@ -1,16 +1,13 @@
--- ============================================================================
--- Contact Center Intelligence & CSAT Optimization
--- Philippine BPO agents handle 2.3M calls daily — Snowflake ingests Amazon Connect interactions, classifies intent, scores sentiment in real-time, and surfaces CSAT drivers before client SLAs breach.
--- ============================================================================
-USE ROLE ACCOUNTADMIN;
-CREATE DATABASE IF NOT EXISTS CONTACT_CENTER_AI;
-CREATE WAREHOUSE IF NOT EXISTS CC_WH WAREHOUSE_SIZE = 'MEDIUM' AUTO_SUSPEND = 120 AUTO_RESUME = TRUE;
-USE DATABASE CONTACT_CENTER_AI;
-CREATE SCHEMA IF NOT EXISTS RAW;
-CREATE SCHEMA IF NOT EXISTS CURATED;
-CREATE SCHEMA IF NOT EXISTS ML;
-CREATE SCHEMA IF NOT EXISTS AI;
-CREATE SCHEMA IF NOT EXISTS SEARCH;
-CREATE SCHEMA IF NOT EXISTS APP;
+-- Generated from generator/demo_specs/aws-philippines-bpo-contact-center.json
+-- Regenerate with: python3 generator/gen_repo_docs.py aws-philippines-bpo-contact-center
+-- This is the schema that is actually deployed for PH_BPO_CONTACT_CENTER.
 
-USE WAREHOUSE CC_WH;
+-- PH_BPO_CONTACT_CENTER  (Contact Center Intelligence & CSAT Optimization)
+-- generated from generator/demo_specs/aws-philippines-bpo-contact-center.json - do not hand-edit
+CREATE DATABASE IF NOT EXISTS PH_BPO_CONTACT_CENTER;
+CREATE SCHEMA IF NOT EXISTS PH_BPO_CONTACT_CENTER.RAW;
+CREATE SCHEMA IF NOT EXISTS PH_BPO_CONTACT_CENTER.CURATED;
+CREATE SCHEMA IF NOT EXISTS PH_BPO_CONTACT_CENTER.APP;
+USE DATABASE PH_BPO_CONTACT_CENTER;
+
+-- 5 real regions; entity names carry their region so the two always agree
