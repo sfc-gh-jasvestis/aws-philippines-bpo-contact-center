@@ -1,109 +1,82 @@
-# Demo Script: Contact Center Intelligence & CSAT Optimization
-## ~4-Minute Recorded Walkthrough
-**Format**: Screen recording with voiceover
-**Target**: Customer meeting / booth loop / social share
-**Narrative**: "Snowflake processes contact center interactions from Amazon Connect, classifies customer intent with AI, scores sentiment for CSAT prediction, and enables natural language analytics — replacing fragmented WFM tools with one platform"
-**Demo Mode**: Open app with `?demo=true` for presenter notes
+# Contact Center Intelligence & CSAT Optimization
 
----
+**Philippines - BPO & IT Services**
+Use case: Contact Center Intelligence
 
-## Two Personas
+> Philippine BPO agents handle 2.3M calls daily — Snowflake ingests Amazon Connect interactions, classifies intent, scores sentiment in real-time, and surfaces CSAT drivers before client SLAs breach.
 
-| Persona | Role | Tool | What they care about |
-|---|---|---|---|
-| **Patricia Angela Villanueva** | VP Client Services | React App (SPCS) | Client CSAT scores, SLA compliance, NPS trends, escalation rates |
-| **Rafael Miguel Chua** | Quality Assurance Lead | Amazon QuickSight | Call quality scoring, agent coaching, root cause of negative sentiment, compliance |
+## Why Snowflake
 
----
+Snowflake processes contact center interactions from Amazon Connect, classifies customer intent with AI, scores sentiment for CSAT prediction, and enables natural language analytics — replacing fragmented WFM tools with one platform
 
-## What's Built
+- **AI_SENTIMENT on 450K transcripts** - Only demo scoring sentiment at this scale natively in Snowflake
+- **AI_CLASSIFY for interaction intent** - Replaces Amazon Comprehend with zero data movement
+- **Amazon Connect integration** - Only demo showing Connect → Snowpipe → AI enrichment pipeline
+- **Agent coaching via Cortex Complete** - AI generates personalized coaching plans from interaction patterns
+- **Philippine BPO voice context** - 70% of world's voice BPO with Filipino agents, US/UK/AU clients
+- **450K searchable transcripts** - Cortex Search across half a million call transcripts with attribute filtering
 
-| Layer | Component | Detail |
+## What is deployed
+
+| | |
+|---|---|
+| Database | `PH_BPO_CONTACT_CENTER` |
+| Service | `PH_BPO_CONTACT_CENTER_APP` |
+| Compute pool | `SEA_DEMOS_PHILIPPINES_POOL` |
+| Dimension table | `RAW.ACCOUNTS` (20 rows) |
+| Fact table | `RAW.INTERACTIONS` (250,000 rows, 90 days) |
+| Curated layer | `CURATED.PERFORMANCE_SUMMARY`, `CURATED.TREND_ANALYSIS`, `CURATED.KPI_SUMMARY` |
+| Currency | PHP (₱) |
+
+Regions in play: Metro Manila, Cebu, Davao, Pampanga, Iloilo
+Segments: Voice Inbound, Voice Outbound, Chat, Email
+
+Dynamic tables are created suspended and refreshed on demand:
+
+```bash
+./refresh_demo_data.sh PH_BPO_CONTACT_CENTER
+```
+
+## KPI cards
+
+Every card below is served live from `CURATED.KPI_SUMMARY`. The app keeps the
+original literal as a fallback, so it still renders if Snowflake is unreachable.
+
+| Card | Value | Backed by |
 |---|---|---|
-| **RAW** | 7 tables | ACCOUNTS (35), AGENTS (8500), INTERACTIONS (620000), TRANSCRIPTS (450000), CSAT_SURVEYS (185000), SLA_DEFINITIONS (35), QUALITY_AUDITS (42000) |
-| **CURATED** | 4 Dynamic Tables | ACCOUNT_HEALTH_SCORE, AGENT_SENTIMENT_SCORES, INTERACTION_ENRICHED, COMPLAINT_PARETO |
-| **ML** | ML.CLASSIFICATION + ML.FORECAST | Forecasting + anomaly detection |
-| **AI** | AI_CLASSIFY, AI_SENTIMENT, COMPLETE | Classification + extraction |
-| **Search** | Cortex Search | 450000 documents indexed |
-| **Agent** | CONTACT_CENTER_AGENT | Semantic View + Search tools |
+| Calls Handled (MTD) | `2.4M` | total across Accounts |
+| Avg Handle Time | `4:32` | average per event |
+| CSAT Score | `4.2/5` | average per event |
+| Agents Active | `12,400` | total across Accounts |
+| First Call Resolution | `78%` | average per event |
+| Occupancy Rate | `84%` | average per event |
+| Agent Attrition | `4.2%/mo` | average per event |
 
 
----
+## Demo flow
 
-## The Story
+1. Executive Cockpit
+2. Sentiment Analytics
+3. Quality & Coaching
+4. Ask AI
+5. Architecture & Data
 
-A Philippine BPO giant operates 12 contact centers handling 620,000 interactions monthly for 35 enterprise clients. Five accounts worth ₱890M in annual contracts are below CSAT SLA targets — but with interactions split across voice, chat, and email, nobody could pinpoint the root cause until now. Amazon Connect captures every interaction; Snowflake's AI classifies, scores, and surfaces the patterns.
+## Talking points
 
----
+- **620,000** - monthly interactions processed across 35 accounts
+- **5 accounts** - below CSAT SLA target (₱890M contract value at risk)
+- **450,000** - transcripts scored by AI_SENTIMENT
+- **23%** - of interactions scored negative sentiment
+- **142 agents** - identified for AI-generated coaching plans
+- **18% CSAT improvement** - after completing AI-recommended coaching
 
-## Script
+## Business impact
 
-### [0:00–0:45] EXECUTIVE COCKPIT
-
-**Show**: Executive Cockpit tab
-
-> "Six hundred twenty thousand interactions processed this month across 35 client accounts."
-
-**Action**: Point at 620K interactions processed KPI
-
-### [0:45–1:30] SENTIMENT ANALYTICS
-
-**Show**: Sentiment Analytics tab
-
-> "AI_SENTIMENT processed 450,000 transcripts — 23% scored negative this month."
-
-**Action**: Show sentiment distribution chart
-
-### [1:30–2:15] QUALITY & COACHING
-
-**Show**: Quality & Coaching tab
-
-> "142 agents in bottom quartile for sentiment scores — candidates for coaching."
-
-**Action**: Show agent performance quadrant
-
-### [2:15–3:00] ASK AI
-
-**Show**: Ask AI tab
-
-> "Patricia asks: 'Which account has the highest escalation rate this week?'"
-
-**Action**: Type: 'Which account has highest escalation rate?'
-
-### [3:00–3:45] ARCHITECTURE & DATA
-
-**Show**: Architecture & Data tab
-
-> "Amazon Connect feeds interactions → Snowpipe Streaming → AI enrichment → real-time dashboards."
-
-**Action**: Walk through architecture diagram
-
+- Philippines handles 70% of global voice BPO outsourcing (IBPAP)
+- AI-powered quality monitoring improves CSAT 15-25% in contact centers (Gartner)
+- Real-time sentiment analysis reduces escalations by 30% (Forrester)
+- Contact center AI market projected to reach $4.1B by 2027 (MarketsandMarkets)
 
 ---
-
-## Key Demo Differentiators
-
-1. **AI_SENTIMENT on 450K transcripts** — Only demo scoring sentiment at this scale natively in Snowflake
-2. **AI_CLASSIFY for interaction intent** — Replaces Amazon Comprehend with zero data movement
-3. **Amazon Connect integration** — Only demo showing Connect → Snowpipe → AI enrichment pipeline
-4. **Agent coaching via Cortex Complete** — AI generates personalized coaching plans from interaction patterns
-5. **Philippine BPO voice context** — 70% of world's voice BPO with Filipino agents, US/UK/AU clients
-6. **450K searchable transcripts** — Cortex Search across half a million call transcripts with attribute filtering
-
-
----
-
-## Demo Prep Checklist
-
-### Data Verification
-- [ ] `SELECT COUNT(*) FROM CONTACT_CENTER_AI.RAW.INTERACTIONS` → 620000
-- [ ] `SELECT COUNT(*) FROM CONTACT_CENTER_AI.RAW.TRANSCRIPTS` → 450000
-- [ ] `SELECT COUNT(DISTINCT ACCOUNT_ID) FROM CONTACT_CENTER_AI.CURATED.ACCOUNT_HEALTH_SCORE WHERE CSAT_STATUS = 'BELOW_SLA'` → 5
-
-### ML Model Verification
-- [ ] `SELECT COUNT(*) FROM CONTACT_CENTER_AI.ML.CSAT_CLASSIFICATION_RESULTS` → >0
-
-### AI/Agent Verification
-- [ ] `SELECT COUNT(*) FROM CONTACT_CENTER_AI.AI.SENTIMENT_SCORES WHERE SENTIMENT < -0.3` → >100000
-- [ ] `SELECT COUNT(DISTINCT INTENT) FROM CONTACT_CENTER_AI.AI.INTENT_CLASSIFICATION` → >=4
-
+Generated from `generator/demo_specs/aws-philippines-bpo-contact-center.json`. Do not hand-edit: run
+`python3 generator/gen_repo_docs.py aws-philippines-bpo-contact-center` instead.
