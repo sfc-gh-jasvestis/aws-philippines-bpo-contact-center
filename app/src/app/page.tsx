@@ -54,6 +54,7 @@ export default function HomePage() {
         <div className="lg:col-span-1">
           <GeoMap
             country="philippines"
+            labels={{ entity: 'Queues', event: 'Interactions', alert: 'Escalations' }}
             regions={data?.regions}
             markers={[{"label": "Makati", "value": "HQ: 8,400 agents", "color": "blue", "size": "lg"}, {"label": "Cebu", "value": "Site: 4,200 agents", "color": "green", "size": "lg"}, {"label": "Clark", "value": "Site: 2,100 agents", "color": "green", "size": "md"}, {"label": "Davao", "value": "Site: 1,200 agents", "color": "green", "size": "md"}, {"label": "Iloilo", "value": "Site: 800 agents", "color": "amber", "size": "sm"}]}
             routes={[]}
@@ -84,8 +85,13 @@ export default function HomePage() {
         columns={[
           { key: 'id', header: '#' },
           { key: 'name', header: 'Queue' },
+          { key: 'region', header: 'Region' },
           { key: 'status', header: 'SLA Status' },
-          { key: 'value', header: 'AHT (min)' },
+          { key: 'm1', header: 'AHT (min)' },
+          { key: 'm2', header: 'Csat Score' },
+          { key: 'm3', header: 'First Call Resolution' },
+          { key: 'events', header: 'Interactions' },
+          { key: 'alerts', header: 'Escalations' },
         ]}
         data={data?.entities || []}
         title="Queue Performance"
