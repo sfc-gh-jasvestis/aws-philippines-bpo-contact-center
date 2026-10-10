@@ -1,0 +1,142 @@
+{
+  "title": "Philippines BPO Contact Center",
+  "duration": "6 minutes",
+  "thesis": "Snowflake turns daily queue activity from a fictional Philippine BPO contact centre into service-level KPIs, 7-day service-level miss risk scores, abandonment rate anomalies and grounded AI answers, all on one governed platform.",
+  "tabs": [
+    {
+      "id": "executive-cockpit",
+      "persona": {
+        "name": "Jericho Manalastas",
+        "role": "Head of Workforce Management (fictional)",
+        "avatar": ""
+      },
+      "talking_points": [
+        "Service level attainment, service-level alerts, intervals below service level and agent labor cost in PHP for 48 fictional queues in Makati City, Taguig, Pasig City, Mandaue City, Cagayan de Oro and Baguio.",
+        "Every KPI is a numerator over a denominator in a curated dynamic table, so it can be traced back to queue-day rows.",
+        "The miss-driver chart shows which alerts end below service level and which never do, such as site power interruptions where traffic is rerouted."
+      ],
+      "show": [
+        "KPI cards",
+        "Daily alerts and missed intervals",
+        "Alerts by miss driver",
+        "Queue table"
+      ],
+      "call_out": "One governed set of contact centre KPIs, traceable to source rows",
+      "transition": {
+        "next_tab": "predictive",
+        "line": "Which queues should the real-time team watch first?"
+      }
+    },
+    {
+      "id": "predictive",
+      "persona": {
+        "name": "Bea Soriano",
+        "role": "Real-Time Analyst (fictional)",
+        "avatar": ""
+      },
+      "talking_points": [
+        "Snowflake ML classification scores each queue's probability of at least one interval below service level in the next 7 days.",
+        "The holdout line shows precision and recall on the most recent labelled days, against the base rate.",
+        "Anomaly detection flags abandonment rate outliers per queue, and the forecast projects contact-centre-wide service-level alerts for 14 days to plan real-time cover."
+      ],
+      "show": [
+        "Holdout metrics",
+        "Risk by queue",
+        "Service-level alert forecast",
+        "Abandonment rate anomalies"
+      ],
+      "call_out": "Honest, evaluated ML inside the data platform",
+      "transition": {
+        "next_tab": "planning",
+        "line": "Is workforce planning keeping up?"
+      }
+    },
+    {
+      "id": "planning",
+      "persona": {
+        "name": "Jericho Manalastas",
+        "role": "Head of Workforce Management (fictional)",
+        "avatar": ""
+      },
+      "talking_points": [
+        "Reforecast compliance, agent skill coverage and agents still in nesting frame the staffing gaps.",
+        "Reforecast compliance against missed intervals by queue shows where skipped intraday reforecasts and missed intervals move together; it is an association, not proof of cause.",
+        "The action memo drafts three prioritised actions from the KPI, queue, miss-driver and risk tables only."
+      ],
+      "show": [
+        "Reforecast compliance and skill coverage",
+        "Reforecast compliance vs missed intervals",
+        "Action memo"
+      ],
+      "call_out": "Grounded draft actions, with a human in the loop",
+      "transition": {
+        "next_tab": "live",
+        "line": "What happens when a caller abandons right now?"
+      }
+    },
+    {
+      "id": "live",
+      "persona": {
+        "name": "Bea Soriano",
+        "role": "Real-Time Analyst (fictional)",
+        "avatar": ""
+      },
+      "talking_points": [
+        "Live contact events land in RAW.LIVE_INTERACTIONS, from the simulator or from Amazon Data Firehose through Snowpipe.",
+        "The Snowflake alert logs ABANDONED contacts with an SOP hint and the queue's current risk band, then emails the on-shift real-time analyst."
+      ],
+      "show": [
+        "Events loaded and lag",
+        "Latest interaction events",
+        "Alert log"
+      ],
+      "call_out": "From abandoned contact to intraday action in one platform",
+      "transition": {
+        "next_tab": "ask-ai",
+        "line": "Now ask the data directly."
+      }
+    },
+    {
+      "id": "ask-ai",
+      "persona": {
+        "name": "Jericho Manalastas",
+        "role": "Head of Workforce Management (fictional)",
+        "avatar": ""
+      },
+      "talking_points": [
+        "The Cortex Agent uses Cortex Analyst over the semantic view for metrics, and Cortex Search over 13 synthetic service-level recovery SOPs.",
+        "Each answer shows the generated SQL and the SOPs it cited."
+      ],
+      "show": [
+        "Ask a sample question",
+        "Generated SQL",
+        "SOP citations"
+      ],
+      "call_out": "Natural-language answers you can audit",
+      "transition": {
+        "next_tab": "architecture",
+        "line": "Here is how it is built."
+      }
+    },
+    {
+      "id": "architecture",
+      "persona": {
+        "name": "Jericho Manalastas",
+        "role": "Head of Workforce Management (fictional)",
+        "avatar": ""
+      },
+      "talking_points": [
+        "Two builds share one core: Snowflake only, or AWS + Snowflake (Data Firehose, Bedrock, QuickSight and Amazon Q).",
+        "Everything shown is synthetic demo data for a fictional BPO contact centre, rebuilt reproducibly from the repo."
+      ],
+      "show": [
+        "Both architecture diagrams"
+      ],
+      "call_out": "One governed core, with an optional AWS edge",
+      "transition": {
+        "next_tab": "",
+        "line": "Questions?"
+      }
+    }
+  ]
+}
